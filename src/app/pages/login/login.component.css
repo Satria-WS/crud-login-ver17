@@ -1,0 +1,45 @@
+label {
+  padding-top: 5%;
+  padding-bottom: 2%;
+  display: block;
+}
+
+div {
+  border: 1px solid salmon;
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 500px;
+  background: transparent;
+  border: 1px solid #656ed3;
+  border-radius: 50px;
+  padding-left: 1rem;
+  color: #656ed3;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+
+/* @keyframes scaleImage {
+  0% { width: 300px; }
+  100% { width: 600px; }
+}
+
+img {
+  animation: scaleImage 2s infinite alternate;
+} */
+
+.round {
+  position: relative;
+  background: #AFB3FF;
+  width: 500px;
+  height: 131px;
+  border-radius: 105px;
+  transform: rotate(-41.105deg) translate(-170% , -70%);
+  top: -10%;
+  left: 10%;
+}
+
+.myOrange {
+display: flex;
+}
