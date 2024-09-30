@@ -35,9 +35,10 @@ img {
   width: 500px;
   height: 131px;
   border-radius: 105px;
-  transform: rotate(-41.105deg) translate(-170% , -70%);
-  top: -10%;
-  left: 10%;
+  transform: rotate(-41.105deg) translate(-40% , -70%);
+  box-shadow: 3px -7px 1px 7px #9096f8;
+  /* top: -10%;
+  left: 10%;  */
 }
 
 .myOrange {
