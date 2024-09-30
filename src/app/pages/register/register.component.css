@@ -1,0 +1,7 @@
+div {
+  border: 1px solid orange;
+}
+
+.kotak {
+  box-shadow: 3px -7px 1px 7px #000;
+}
