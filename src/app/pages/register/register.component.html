@@ -1,8 +1,60 @@
 <ng-container>
-  <div class="flex bg-[#EBEFFF] h-screen">
+  <div class="relative flex bg-[#EBEFFF] h-screen">
     <div class="coulumn-1 flex-1">
-      <div class="kotak bg-[#AFB3FF] w-[630px] h-[377px] rotate-[-90deg] rounded-[100px]"></div>
+      <div
+        class="kotak bg-[#AFB3FF] w-[630px] h-[377px] rotate-[-90deg] rounded-[100px]"></div>
+      <div class="relative bottom-56">
+        <img
+          class="absolute left-32"
+          src="/assets/image/register.png"
+          alt="register" />
+      </div>
     </div>
-    <div class="coulumn-2 flex-1">coulumn-2</div>
+    <div class="coulumn-2 flex flex-col items-center justify-center flex-1">
+      <h3 class="font-bold">Please Fill out from to Register!</h3>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- <div class="full-name">
+          <label for="">Full name:</label>
+          <input type="text"/>
+        </div> -->
+        <div class="user-name">
+          <label class="font-mono" for="username">Username:</label>
+          <input id="username" type="text" />
+        </div>
+
+        <div class="email">
+          <label class="font-mono" for="email">email:</label>
+          <input id="email" type="email" />
+        </div>
+
+        <div class="password">
+          <label class="font-mono" for="password">password:</label>
+          <input id="password" type="password" />
+        </div>
+
+        <div class="confirm password">
+          <label class="font-mono" for="confirm-password"
+            >confirm password:</label
+          >
+          <input id="confirm-password" type="password" />
+        </div>
+        <div class="button py-12">
+          <button
+            class="w-full bg-[#656ED3] hover:bg-opacity-90 rounded-full py-2">
+            <span class="text-white">Login</span>
+          </button>
+        </div>
+        <div>
+          <p class="text-center font-mono">
+            Yes i have an account ?
+            <span
+              routerLink="/login"
+              class="font-semibold hover:text-[#6974ee] cursor-pointer">
+              Login
+            </span>
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
 </ng-container>
