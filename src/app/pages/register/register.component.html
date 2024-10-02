@@ -19,24 +19,135 @@
         </div> -->
         <div class="user-name">
           <label class="font-mono" for="username">Username:</label>
-          <input id="username" type="text" />
+          <input
+            formControlName="username"
+            [minlength]="5"
+            [maxlength]="30"
+            id="username"
+            type="text"
+            required />
         </div>
 
+        <!-- <div>
+          @if (
+
+            registerForm.invalid &&
+            (registerForm.dirty || registerForm.touched)
+          ) {
+            <small
+              *ngIf="registerForm.errors?.['required']"
+              class="text-red-500">
+              Username is required
+            </small>
+            <small class="text-red-500">
+              Username must be at least 5 characters long.
+            </small>
+            <small class="text-red-500">Username must be 20 characters</small>
+          }
+        </div> -->
+        <div
+          *ngIf="
+            registerForm.get('username').invalid &&
+            (registerForm.get('username').dirty ||
+              registerForm.get('username').touched)
+          ">
+          <small
+            *ngIf="registerForm.get('username').errors?.['required']"
+            class="text-red-500">
+            Username is required.
+          </small>
+          <small
+            *ngIf="registerForm.get('username').errors?.['minlength']"
+            class="text-red-500">
+            Username must be at least 5 characters long.
+          </small>
+          <small
+            *ngIf="registerForm.get('username').errors?.['maxlength']"
+            class="text-red-500">
+            Username must be 20 characters
+          </small>
+          <small
+            *ngIf="registerForm.get('username').errors?.['pattern']"
+            class="text-red-500">
+            Username can only contain letters, numbers, and underscores.
+          </small>
+        </div>
         <div class="email">
           <label class="font-mono" for="email">email:</label>
-          <input id="email" type="email" />
+          <input
+            formControlName="email"
+            [maxlength]="25"
+            id="email"
+            type="email" />
+        </div>
+        <div *ngIf="registerForm.get('email').invalid && formSubmitted">
+          <small
+            class="text-red-500"
+            *ngIf="registerForm.get('email').errors?.['required']"
+            >email required</small
+          >
+          <small
+            class="text-red-500"
+            *ngIf="registerForm.get('email').errors?.['email']"
+            >Please enter a valid email address.</small
+          >
         </div>
 
         <div class="password">
           <label class="font-mono" for="password">password:</label>
-          <input id="password" type="password" />
+          <input
+            formControlName="password"
+            [maxlength]="10"
+            id="password"
+            type="password" />
+        </div>
+        <div *ngIf="registerForm.get('password').invalid && formSubmitted">
+          <small
+            class="text-red-500"
+            *ngIf="registerForm.get('password').errors?.['required']"
+            >password required</small
+          >
+          <small
+            class="text-red-500"
+            *ngIf="registerForm.get('password').errors?.['pattern']"
+            >Please enter a valid password.</small
+          >
         </div>
 
         <div class="confirm password">
           <label class="font-mono" for="confirm-password"
             >confirm password:</label
           >
-          <input id="confirm-password" type="password" />
+          <input
+            formControlName="passwordConfirm"
+            [maxlength]="10"
+            id="confirm-password"
+            type="password" />
+        </div>
+        <div
+          *ngIf="registerForm.get('passwordConfirm').invalid && formSubmitted">
+          <small
+            class="text-red-500"
+            *ngIf="registerForm.get('passwordConfirm').errors?.['required']"
+            >password confirm required</small
+          >
+          <!-- <small
+            class="text-red-500"
+            *ngIf="registerForm.get('passwordConfirm').errors?.['pattern']"
+            >Please enter a valid password confirm.</small
+          > -->
+          <small
+            class="text-red-500"
+            *ngIf="registerForm.errors?.['passwordsMismatch']"
+            >password didnot match.</small
+        >
+          <!-- @if (registerForm.get('passwordConfirm').errors?.['pattern']) {
+            <small class="text-red-500"
+              >Please enter a valid password confirm</small
+            >
+          } @else if (registerForm.errors?.passwordsMismatch) {
+            <small class="text-red-500">Password didnot match.</small>
+          } -->
         </div>
         <div class="button py-12">
           <button
