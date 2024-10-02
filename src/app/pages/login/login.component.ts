@@ -44,20 +44,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // onSubmit(): void {
-  //   const formData: formLogin = this.loginForm.value;
+  onSubmit(): void {
+    const formData: formLogin = this.loginForm.value;
 
-  //   if (this.loginForm.valid) {
-  //     console.log('username:', this.loginForm.value.username);
-  //     console.log('password:', this.loginForm.value.password);
-  //     console.log(formData);
-  //   }
-  // }
-
-  onSubmit() {
-    // return this.authService.login();
-    console.log(this.authService.login());
+    if (this.loginForm.valid) {
+      console.log('username:', this.loginForm.value.username);
+      console.log('password:', this.loginForm.value.password);
+      console.log(formData);
+    }
   }
+
+  // onSubmit() {
+  //   // return this.authService.login();
+  //   console.log(this.authService.login());
+  // }
 
 
 
