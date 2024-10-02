@@ -6,10 +6,11 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
-
+  FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { confirmPasswordValidator1 } from '../../validator/confirm-password.validator';
 
 interface formRegister {
   username: string;
@@ -27,13 +28,24 @@ interface formRegister {
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup | any;
+
   formSubmitted: boolean = false;
+
+  // passwordForm: FormGroup<any>;
   // passwordsMismatch: boolean = false;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService
   ) {}
+
+  passwordForm: FormGroup = new FormGroup(
+    {
+      password1: new FormControl<string>('', [Validators.required]),
+      password2: new FormControl<string>('', [Validators.required]),
+    },
+    { validators: confirmPasswordValidator1 }
+  );
 
   ngOnInit(): void {
     this.registerForm = this.fb.group(
@@ -66,15 +78,10 @@ export class RegisterComponent implements OnInit {
             Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{5,}$/),
           ],
         ],
-      },
-      { validators: this.passwordMatchValidator }
+      }
+      // { validators: this.passwordMatchValidator }
+      // { validators: confirmPasswordValidator }
     );
-  }
-
-  passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password')?.value;
-    const passwordConfirm = form.get('passwordConfirm')?.value;
-    return password === passwordConfirm ? null : { passwordsMismatch: true };
   }
 
   onSubmit() {
@@ -94,8 +101,15 @@ export class RegisterComponent implements OnInit {
     }
     // console.log('password match?', this.passwordMatchValidator());
   }
-}
 
+  onSubmitx() {
+    this.formSubmitted = true;
+    if (this.passwordForm.valid) {
+      // Handle form submission
+      console.log(this.passwordForm.value);
+    }
+  }
+}
 // note explanation for regex
 // ^: Asserts the start of the string.
 // (?=.*[a-z]): Asserts that at least one lowercase letter is present.
