@@ -126,28 +126,26 @@
         </div>
         <div
           *ngIf="registerForm.get('passwordConfirm').invalid && formSubmitted">
-          <small
+          <!-- <small
             class="text-red-500"
             *ngIf="registerForm.get('passwordConfirm').errors?.['required']"
             >password confirm required</small
-          >
+          > -->
           <!-- <small
             class="text-red-500"
             *ngIf="registerForm.get('passwordConfirm').errors?.['pattern']"
             >Please enter a valid password confirm.</small
           > -->
-          <small
+          <!-- <small
             class="text-red-500"
-            *ngIf="registerForm.errors?.['passwordsMismatch']"
+            *ngIf="registerForm.errors?.['PasswordNoMatch']"
             >password didnot match.</small
-        >
-          <!-- @if (registerForm.get('passwordConfirm').errors?.['pattern']) {
-            <small class="text-red-500"
-              >Please enter a valid password confirm</small
-            >
-          } @else if (registerForm.errors?.passwordsMismatch) {
+        > -->
+          @if (registerForm.get('passwordConfirm').errors?.['required']) {
+            <small class="text-red-500">password confirm required</small>
+          } @else if (registerForm.errors?.['PasswordNoMatch']) {
             <small class="text-red-500">Password didnot match.</small>
-          } -->
+          }
         </div>
         <div class="button py-12">
           <button
@@ -166,6 +164,29 @@
           </p>
         </div>
       </form>
+      <form [formGroup]="passwordForm" (ngSubmit)="onSubmitx()">
+        <div>
+          <label for="password1">Password:</label>
+          <input type="password" id="password1" formControlName="password1" />
+        </div>
+        <div>
+          <label for="password2">Confirm Password:</label>
+          <input type="password" id="password2" formControlName="password2" />
+          <div
+            class="error-message"
+            *ngIf="passwordForm.invalid && formSubmitted">
+            <small
+              *ngIf="passwordForm.errors?.['PasswordNoMatch']"
+              class="text-red-500">
+              password did not match
+            </small>
+          </div>
+        </div>
+        <button type="submit" [disabled]="passwordForm.invalid">Submit</button>
+      </form>
     </div>
   </div>
 </ng-container>
+<!--   @if (registerForm.get('passwordConfirm').errors?.['required']) { -->
+
+<!--     *ngIf="passwordForm.errors?.['PasswordNoMatch']"> -->
