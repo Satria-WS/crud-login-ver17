@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { confirmPasswordValidator1 } from '../../validator/confirm-password.validator';
+import { confirmPasswordValidator1, confirmPasswordValidator2 } from '../../validator/confirm-password.validator';
 
 interface formRegister {
   username: string;
@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup | any;
 
   formSubmitted: boolean = false;
+  passwordForm: FormGroup | any;
 
   // passwordForm: FormGroup<any>;
   // passwordsMismatch: boolean = false;
@@ -39,48 +40,52 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  passwordForm: FormGroup = new FormGroup(
-    {
-      password1: new FormControl<string>('', [Validators.required]),
-      password2: new FormControl<string>('', [Validators.required]),
-    },
-    { validators: confirmPasswordValidator1 }
-  );
+
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group(
+    this.passwordForm = new FormGroup(
       {
-        username: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(25),
-            Validators.pattern('^[a-zA-Z0-9_]+$'),
-          ],
-        ],
-        email: ['', [Validators.required, Validators.email]],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(10),
-            Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{5,}$/),
-          ],
-        ],
-        passwordConfirm: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(10),
-            Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{5,}$/),
-          ],
-        ],
-      }
-      // { validators: this.passwordMatchValidator }
-      // { validators: confirmPasswordValidator }
+        password1: new FormControl<string>('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{5,}$/),
+        ]),
+        password2: new FormControl<string>('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{5,}$/),
+        ]),
+      },
+      { validators: confirmPasswordValidator1 }
+    );
+    this.registerForm = new FormGroup(
+      {
+        username: new FormControl<string>('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(25),
+          Validators.pattern('^[a-zA-Z0-9_]+$'),
+        ]),
+        email: new FormControl<string>('', [
+          Validators.required,
+          Validators.email,
+        ]),
+        password: new FormControl<string>('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{5,}$/),
+        ]),
+        passwordConfirm: new FormControl<string>('', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).{5,}$/),
+        ]),
+      },
+      { validators: confirmPasswordValidator1 } // Apply the custom validator here
     );
   }
 
