@@ -3,11 +3,17 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 export const confirmPasswordValidator1: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
-  return control.value.password1 === control.value.password2
-    ? null
-    : { PasswordNoMatch: true };
-};
+  const password = control.get('password')?.value;
+  const passwordConfirm = control.get('passwordConfirm')?.value;
 
+  // If passwordConfirm is empty, indicate that passwords do not match
+  if (!passwordConfirm) {
+    return { PasswordNoMatch: false }; // or a different key like PasswordConfirmRequired
+  }
+
+  // Check if passwords match
+  return password === passwordConfirm ? null : { PasswordNoMatch: true };
+};
 export function confirmPasswordValidator2(
   control: AbstractControl
 ): { [key: string]: boolean } | null {
@@ -18,4 +24,13 @@ export function confirmPasswordValidator2(
     return { PasswordNoMatch: true };
   }
   return null;
+}
+
+export function passwordMatchValidator(): ValidatorFn {
+  return (formGroup: AbstractControl): { [key: string]: boolean } | null => {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('passwordConfirm')?.value;
+
+    return password === confirmPassword ? null : { mismatch: true };
+  };
 }
