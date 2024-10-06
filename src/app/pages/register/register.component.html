@@ -158,57 +158,6 @@
           </p>
         </div>
       </form>
-
-      <!-- experiment FORM -->
-      <!-- <form [formGroup]="passwordForm" (ngSubmit)="onSubmitx()">
-        <div>
-          <label for="password1">Password 1</label>
-          <input
-            id="password1"
-            type="password"
-            formControlName="password1"
-            placeholder="Enter password 1" />
-          <div
-            *ngIf="
-              passwordForm.get('password1')?.invalid &&
-              (passwordForm.get('password1')?.touched ||
-                passwordForm.get('password1')?.dirty)
-            ">
-            <small *ngIf="passwordForm.get('password1')?.errors?.['required']"
-              >Password is required.</small
-            >
-            <small *ngIf="passwordForm.get('password1')?.errors?.['pattern']"
-              >Password must include at least one lowercase</small
-            >
-          </div>
-        </div>
-
-        <div>
-          <label for="password2">Password 2</label>
-          <input
-            id="password2"
-            type="password"
-            formControlName="password2"
-            placeholder="Enter password 2"
-            required />
-          <div
-            *ngIf="
-              passwordForm.get('password2')?.invalid &&
-              (passwordForm.get('password2')?.touched ||
-                passwordForm.get('password2')?.dirty)
-            ">
-            <small *ngIf="passwordForm.get('password2')?.errors?.['required']"
-              >Password is required.</small
-            >
-          </div>
-        </div>
-
-        <div *ngIf="passwordForm.errors?.['PasswordNoMatch']">
-          <small>Passwords do not match.</small>
-        </div>
-
-        <button type="submit" [disabled]="passwordForm.invalid">Submit</button>
-      </form> -->
     </div>
   </div>
 </ng-container>
