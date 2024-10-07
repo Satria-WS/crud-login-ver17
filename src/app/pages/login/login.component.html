@@ -7,10 +7,58 @@
           <div class="username">
             <label class="font-mono" for="text"> Username: </label>
             <input formControlName="username" type="text" id="text" />
+            <div>
+              @if (
+                loginForm.get('username').invalid &&
+                (loginForm.get('username').dirty ||
+                  loginForm.get('username').touched)
+              ) {
+                @if (loginForm.get('username').errors?.['required']) {
+                  <small class="text-red-500"> Username is required</small>
+                } @else if (loginForm.get('username').errors?.['pattern']) {
+                  <small class="text-red-500">
+                    Username can only contain letters, numbers, and
+                    underscores.</small
+                  >
+                } @else if (loginForm.get('username').errors?.['minlength']) {
+                  <small class="text-red-500">
+                    Username must be at least 5 characters long.</small
+                  >
+                } @else if (loginForm.get('username').errors?.['maxlength']) {
+                  <small class="text-red-500">
+                    Username must be 20 characters.</small
+                  >
+                }
+              }
+            </div>
           </div>
           <div class="password">
             <label class="font-mono" for="password"> Password: </label>
             <input formControlName="password" type="password" id="password" />
+            <div>
+              @if (
+                loginForm.get('password').invalid &&
+                (loginForm.get('password').dirty ||
+                  loginForm.get('password').touched)
+              ) {
+                @if (loginForm.get('password').errors?.['required']) {
+                  <small class="text-red-500"> password is required</small>
+                } @else if (loginForm.get('password').errors?.['pattern']) {
+                  <small class="text-red-500">
+                    password can only contain letters, numbers, and
+                    underscores.</small
+                  >
+                } @else if (loginForm.get('password').errors?.['minlength']) {
+                  <small class="text-red-500">
+                    password must be at least 5 characters long.</small
+                  >
+                } @else if (loginForm.get('password').errors?.['maxlength']) {
+                  <small class="text-red-500">
+                    password must be 20 characters.</small
+                  >
+                }
+              }
+            </div>
           </div>
           <div class="button py-12">
             <button
@@ -28,16 +76,8 @@
                 Register
               </span>
             </p>
-            <!-- <div class="icon">
-            <ul class="flex space-x-2">
-              <li>fb</li>
-              <li>whatsap</li>
-              <li>telegram</li>
-            </ul>
-          </div> -->
           </div>
         </form>
-        <!-- <div class="round">rounded</div> -->
       </div>
       <div class="">
         <div class="round">round</div>
