@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // getIsAuth: any = localStorage.getItem('isAuth');
-   isAuth: boolean = JSON.parse(localStorage.getItem('isAuth') || 'false');
-  // isAuth: boolean = false;
-  // isAuthLocalStorage: boolean = JSON.parse(localStorage.getItem('isAuth'));
+  // getIsAuth: string | null = localStorage.getItem('isAuth');
+  // isAuth: boolean = this.getIsAuth ? JSON.parse(this.getIsAuth) : false;
+  isAuth: boolean = false;
+
   private readonly SECOND_3SecondTime = 3;
   private readonly EXPIRATION_TIME = 10 * 60 * 1000;
 
@@ -23,18 +22,13 @@ export class AuthService {
     },
   ];
 
-
-
   setUsersToLocalStorage() {
-    const setUsers = localStorage.setItem('users', JSON.stringify(this.userData));
-    const getUsers = localStorage.getItem('users');
-    console.log(getUsers);
-    return setUsers;
+
+    localStorage.setItem('users', JSON.stringify(this.userData));
+    console.log(localStorage.getItem('users'));
   }
   setIsAuthToLocalStorage() {
-    const setisAuth = localStorage.setItem('isAuth', JSON.stringify(this.isAuth));
-    const getisAuth = localStorage.getItem('isAuth');
-    return setisAuth;
+    localStorage.setItem('isAuth', JSON.stringify(this.isAuth));
   }
 
   login(username: string, password: string) {
@@ -46,16 +40,17 @@ export class AuthService {
       username === getUsernameAfterParsing &&
       password === getPasswrodAfterParsing
     ) {
-      console.log(true);
+      const getUsers = localStorage.getItem('users');
+      console.log('users???', getUsers);
       console.log('login succesfully');
-       // Set authentication status and login timestamp
-       localStorage.setItem('isAuth', JSON.stringify(true));
+      this.isAuth = true;
+      // Set authentication status and login timestamp
+      localStorage.setItem('isAuth', JSON.stringify(this.isAuth));
       // this.isAuth = true;
-      console.log('authAfterSubmit???', this.isAuth);
+      console.log('authAfterSubmitOnLocalStorage?', localStorage.getItem('isAuth'));
     } else {
-      console.log(false);
+      console.log('login failed');
     }
-
   }
 
   isLoggedIn(): boolean {
