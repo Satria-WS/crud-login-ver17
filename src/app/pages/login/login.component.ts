@@ -56,6 +56,8 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
+    this.authService.setUsersToLocalStorage();
+    this.authService.setIsAuthToLocalStorage();
   }
 
   onSubmit(): void {
@@ -68,7 +70,8 @@ export class LoginComponent implements OnInit {
       console.log('password:', getPassword);
       console.log(formData);
 
-      // this.authService.login()
+      this.authService.login(getUsername, getPassword);
+      this.router.navigate(['/dashboard']);
     }
   }
 
