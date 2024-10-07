@@ -8,7 +8,7 @@ export class AuthService {
 
   constructor() {}
 
-  userData = [
+  userData: any = [
     {
       username: 'admin',
       email: 'admin@gmail.com',
@@ -17,8 +17,18 @@ export class AuthService {
     },
   ];
 
-  login() {
-    return this.userData[0].username;
+
+
+  setUsersToLocalStorage() {
+    const setUsers = localStorage.setItem('users', JSON.stringify(this.userData));
+    const getUsers = localStorage.getItem('users');
+    console.log(getUsers);
+    return setUsers;
+  }
+
+  login(uername:string , password:string) {
+
+
   }
 
   isLoggedIn(): boolean {
