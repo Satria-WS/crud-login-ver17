@@ -87,6 +87,8 @@ export class RegisterComponent implements OnInit {
       },
       { validators: confirmPasswordValidator1 } // Apply the custom validator here
     );
+
+    this.authService.setUsersToLocalStorage();
   }
 
   onSubmit() {
@@ -96,6 +98,9 @@ export class RegisterComponent implements OnInit {
 
     if (this.registerForm.valid) {
       const formData: formRegister = this.registerForm.value;
+      const getUsername = this.registerForm.value.username; // get object username
+      const getPassword = this.registerForm.value.password;
+      console.log(getUsername, getPassword);
       console.log(formData);
     } else {
       this.registerForm.markAllAsTouched();
