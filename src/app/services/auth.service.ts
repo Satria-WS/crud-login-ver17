@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  // getIsAuth: string | null = localStorage.getItem('isAuth');
-  // isAuth: boolean = this.getIsAuth ? JSON.parse(this.getIsAuth) : false;
-  isAuth: boolean = false;
+  getIsAuth: string | null = localStorage.getItem('isAuth');
+  isAuth: boolean = this.getIsAuth !== null ? JSON.parse(this.getIsAuth) : false;
+  // isAuth: boolean = false;
 
   private readonly SECOND_3SecondTime = 3;
   private readonly EXPIRATION_TIME = 10 * 60 * 1000;
