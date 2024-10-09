@@ -8,8 +8,12 @@ export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
+  const getAuthLocalStorage = localStorage.getItem('isAuth');
+
+
+
   // if auth is true  , can go to dashboard page
-  if (authService.isLoggedIn()) {
+  if (authService.isLoggedIn() || getAuthLocalStorage) {
     return true;
   }
 
