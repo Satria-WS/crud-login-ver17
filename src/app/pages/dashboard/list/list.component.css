@@ -1,0 +1,12 @@
+
+.title , .icon {
+  font-family: 'jost';
+}
+
+.icon {
+  /* border: 1px solid red; */
+}
+
+button {
+  cursor: pointer;
+}

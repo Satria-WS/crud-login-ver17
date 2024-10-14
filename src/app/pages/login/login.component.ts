@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     });
     this.authService.setUsersToLocalStorage();
     this.authService.setIsAuthToLocalStorage();
+    console.log('hello word')
   }
 
   onSubmit(): void {

@@ -10,7 +10,10 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { confirmPasswordValidator1, confirmPasswordValidator2 } from '../../validator/confirm-password.validator';
+import {
+  confirmPasswordValidator1,
+  confirmPasswordValidator2,
+} from '../../validator/confirm-password.validator';
 
 interface formRegister {
   username: string;

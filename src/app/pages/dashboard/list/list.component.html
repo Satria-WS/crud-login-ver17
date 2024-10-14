@@ -1,0 +1,32 @@
+<div class="bg-[#9395D3] flex justify-between p-5">
+  <h1 class="font-[jost] text-2xl text-white font-semibold">TODO APP</h1>
+  <img src="/assets/icon/calender.svg" alt="calender" />
+</div>
+<div class="bg-[#D6D7EF] h-screen px-2 py-5 flex flex-col">
+  <div class="flex justify-between bg-white rounded-2xl hover:shadow-md my-4 p-5">
+    <div class="title">
+      <h3 class="text-base text-[#9395D3] font-semibold">TODO TITLE</h3>
+      <p class="text-xs pt-1">TODO SUB TITLE</p>
+    </div>
+    <div class="icon flex items-center">
+      <div class="space-x-5">
+        <button routerLink="/dashboard/edit" >
+          <img src="/assets/icon/edit.svg" alt="edit" />
+        </button>
+        <button>
+          <img src="/assets/icon/delete.svg" alt="delete" />
+        </button>
+        <button>
+          <img src="/assets/icon/check.svg" alt="checklist" />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="border border-red-300 flex-1 relative">
+    <button
+      routerLink="/dashboard/add"
+      class="fixed right-0 bottom-0 bg-[#9395D3] w-[70px] h-[70px] rounded-full">
+      <span class="text-white text-2xl">+</span>
+    </button>
+  </div>
+</div>
