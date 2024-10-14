@@ -1,13 +1,13 @@
 input[type='text'] {
-width: 100%;
-border-bottom: 1px solid #656ed3;
-color: #8B8787;
-font-family: Jost;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-padding: 1rem;
+  width: 100%;
+  border-bottom: 1px solid #656ed3;
+  color: #8B8787;
+  font-family: Jost;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 1rem;
 
 }
 
@@ -26,32 +26,42 @@ input[type='text']:focus {
 label {
   position: absolute;
   left: 1rem;
-  padding-top:0.4rem;
+  padding-top: 0.4rem;
 
   transition: 0.2s ease all;
   color: black;
-  pointer-events: none; /* Prevent label from interfering with input clicks */
+  pointer-events: none;
+  /* Prevent label from interfering with input clicks */
 }
 
 
-input:placeholder-shown + label {
-  top: 10px; /* Original position */
-  font-size: 16px; /* Original size */
-  color: black; /* Original color */
+input:placeholder-shown+label {
+  top: 10px;
+  /* Original position */
+  font-size: 16px;
+  /* Original size */
+  color: black;
+  /* Original color */
 }
 
-input:focus + label,
-input:not(:placeholder-shown) + label {
-    top: -2px; /* Move label up */
+input:focus+label,
+input:not(:placeholder-shown)+label {
+  top: -2px;
+  /* Move label up */
+  left: 10px;
+  font-size: 12px;
+  /* Shrink label */
+  color: red;
+  /* Change label color on focus */
+
+  /* Reset label when input is empty and not focused */
+  input:focus:placeholder-shown+label {
+    top: -2px;
+    /* Keep label up when focused */
     left: 10px;
-    font-size: 12px; /* Shrink label */
-    color: red; /* Change label color on focus */
-
-/* Reset label when input is empty and not focused */
-input:focus:placeholder-shown + label {
-    top: -2px; /* Keep label up when focused */
-    left: 10px;
-    font-size: 12px; /* Keep label small */
-    color: red; /* Keep color changed */
-}
+    font-size: 12px;
+    /* Keep label small */
+    color: red;
+    /* Keep color changed */
+  }
 }
