@@ -1,11 +1,7 @@
 <div class="bg-[#9395D3] flex justify-between p-5">
-  <button class="cursor-pointer">
-    <img
-      routerLink="/dashboard/list"
-      src="/assets/icon/back.svg"
-      alt="arrow_back" />
+  <button class="cursor-pointer" routerLink="/dashboard/list" aria-label="back">
+    <img src="/assets/icon/back.svg" alt="arrow_back" />
   </button>
-
   <h1 class="font-[jost] text-2xl text-white font-semibold">Add Task</h1>
   <img src="/assets/icon/calender.svg" alt="calender" />
 </div>
@@ -16,11 +12,13 @@
         <input formControlName="title" id="title" type="text" placeholder="" />
         <label for="title">Title</label>
       </div>
-      @if (addForm.get('title').invalid && formSubmitted) {
-        @if (addForm.get('title')?.errors?.['required']) {
-          <small class="text-red-500">Title is required.</small>
+      <ng-container>
+        @if (addForm.get('title').invalid && formSubmitted) {
+          @if (addForm.get('title')?.errors?.['required']) {
+            <small class="text-red-500">Title is required.</small>
+          }
         }
-      }
+      </ng-container>
 
       <div class="detail input-container">
         <input
@@ -31,14 +29,19 @@
           placeholder="" />
         <label for="detail">Detail</label>
       </div>
-      @if (addForm.get('detail').invalid && formSubmitted) {
-        @if (addForm.get('detail')?.errors?.['required']) {
-          <small class="text-red-500">Detail is required.</small>
+      <ng-container>
+        @if (addForm.get('detail').invalid && formSubmitted) {
+          @if (addForm.get('detail')?.errors?.['required']) {
+            <small class="text-red-500">Detail is required.</small>
+          }
         }
-      }
+      </ng-container>
     </div>
     <div class="p-3">
-      <button class="button-add bg-[#9395D3] w-full p-5 rounded-xl" alt="test">
+      <button
+        type="submit"
+        class="button-add bg-[#9395D3] w-full p-5 rounded-xl"
+        alt="test">
         <span class="text-white text-lg font-semibold hover:shadow-xl">
           ADD
         </span>

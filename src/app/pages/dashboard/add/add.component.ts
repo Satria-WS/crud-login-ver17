@@ -53,8 +53,10 @@ export class AddComponent implements OnInit {
     this.formSubmitted = true;
 
     if (this.addForm.valid) {
+      this.formSubmitted = false;
+
       this.addList(formData);
-      this.addForm.reset();
+      // this.addForm.reset();
     } else {
       console.warn('form is invalid');
     }
