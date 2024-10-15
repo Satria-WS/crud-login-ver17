@@ -7,7 +7,7 @@ input[type='text'] {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  padding: 1rem;
+  padding: 24px 16px 8px 16px;
 
 }
 
@@ -40,7 +40,7 @@ input:placeholder-shown+label {
   /* Original position */
   font-size: 16px;
   /* Original size */
-  color: black;
+  color: #8B8787;
   /* Original color */
 }
 
@@ -51,7 +51,7 @@ input:not(:placeholder-shown)+label {
   left: 10px;
   font-size: 12px;
   /* Shrink label */
-  color: red;
+  color: #8B8787;
   /* Change label color on focus */
 
   /* Reset label when input is empty and not focused */
@@ -61,7 +61,7 @@ input:not(:placeholder-shown)+label {
     left: 10px;
     font-size: 12px;
     /* Keep label small */
-    color: red;
+    color: #8B8787;
     /* Keep color changed */
   }
 }
