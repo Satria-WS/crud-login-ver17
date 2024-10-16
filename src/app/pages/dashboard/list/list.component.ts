@@ -18,9 +18,19 @@ import {
 export class ListComponent {
   showList: List[];
 
+
   constructor(private crudService: CrudService) {
     this.showList = this.crudService.listApp;
-   }
+  }
+
+  deleteListById(_id: number) {
+    console.log('hello world')
+    console.log(_id)
+
+    this.crudService.deleteList(_id);
+  }
+
+
 
   // showList() {
   //   const showList = this.crudService.listApp;
