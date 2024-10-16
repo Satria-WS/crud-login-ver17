@@ -38,15 +38,15 @@ export class AddComponent implements OnInit {
     });
   }
 
-  private addList(formData: { title: string; detail: string }): void {
-    const newItem: List = {
-      _id: this.showList.length + 1,
-      title: formData.title,
-      text: formData.detail,
-    };
-    this.showList.push(newItem);
-    console.log('Updated showList:', this.showList);
-  }
+  // private addList(formData: { title: string; detail: string }): void {
+  //   const newItem: List = {
+  //     _id: this.showList.length + 1,
+  //     title: formData.title,
+  //     text: formData.detail,
+  //   };
+  //   this.showList.push(newItem);
+  //   console.log('Updated showList:', this.showList);
+  // }
 
   onSubmit(): void {
     const formData = this.addForm.value;
@@ -55,8 +55,9 @@ export class AddComponent implements OnInit {
     if (this.addForm.valid) {
       this.formSubmitted = false;
 
-      this.addList(formData);
-      // this.addForm.reset();
+      // this.addList(formData);
+      this.crudService.addList(formData);
+      this.addForm.reset();
     } else {
       console.warn('form is invalid');
     }
