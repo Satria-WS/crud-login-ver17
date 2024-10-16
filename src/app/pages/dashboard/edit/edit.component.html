@@ -1,1 +1,51 @@
-<p>edit works!</p>
+<div class="bg-[#9395D3] flex justify-between p-5">
+  <button class="cursor-pointer" routerLink="/dashboard/list" aria-label="back">
+    <img src="/assets/icon/back.svg" alt="arrow_back" />
+  </button>
+  <h1 class="font-[jost] text-2xl text-white font-semibold">Edit Task</h1>
+  <img src="/assets/icon/calender.svg" alt="calender" />
+</div>
+<div class="bg-white w-screen">
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <div class="p-7">
+      <div class="title input-container">
+        <input formControlName="title" id="title" type="text" placeholder="" />
+        <label for="title">Title</label>
+      </div>
+      <ng-container>
+        @if (updateForm.get('title').invalid && formSubmitted) {
+          @if (updateForm.get('title')?.errors?.['required']) {
+            <small class="text-red-500">Title is required.</small>
+          }
+        }
+      </ng-container>
+
+      <div class="detail input-container">
+        <input
+          formControlName="detail"
+          id="detail"
+          type="text"
+          title="text"
+          placeholder="" />
+        <label for="detail">Detail</label>
+      </div>
+      <ng-container>
+        @if (updateForm.get('detail').invalid && formSubmitted) {
+          @if (updateForm.get('detail')?.errors?.['required']) {
+            <small class="text-red-500">Detail is required.</small>
+          }
+        }
+      </ng-container>
+    </div>
+    <div class="p-3">
+      <button
+        type="submit"
+        class="button-add bg-[#9395D3] w-full p-5 rounded-xl"
+        alt="test">
+        <span class="text-white text-lg font-semibold hover:shadow-xl">
+          Update
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
