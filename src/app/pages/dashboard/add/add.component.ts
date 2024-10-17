@@ -33,7 +33,7 @@ export class AddComponent implements OnInit {
 
   private createForm(): FormGroup {
     return this.fb.group({
-      title: ['', [Validators.required]],
+      title: ['', Validators.required],
       detail: ['', Validators.required],
     });
   }
