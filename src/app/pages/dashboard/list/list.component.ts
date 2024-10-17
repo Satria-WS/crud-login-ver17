@@ -31,6 +31,11 @@ export class ListComponent {
   }
 
 
+  // checkItemId(id:number) {
+
+  //   console.log('hello world', id);
+  // }
+
 
   // showList() {
   //   const showList = this.crudService.listApp;
