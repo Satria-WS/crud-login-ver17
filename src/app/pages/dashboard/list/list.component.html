@@ -12,7 +12,7 @@
       </div>
       <div class="icon flex items-center">
         <div class="space-x-5">
-          <button routerLink="/dashboard/edit">
+          <button [routerLink]="['/dashboard/edit', item._id]">
             <img src="/assets/icon/edit.svg" alt="edit" />
           </button>
           <button (click)="deleteListById(item._id)">
