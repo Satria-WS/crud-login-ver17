@@ -27,6 +27,16 @@ export class CrudService {
     console.log('Updated showList:', this.listApp);
   }
 
+  updateList(id: number, formData: { title: string; detail: string }): void {
+    const findIndex = this.listApp.findIndex(index => index._id === id);
+    if (findIndex !== -1) {
+      this.listApp[findIndex].title = formData.title;
+      this.listApp[findIndex].text = formData.detail;
+    } else {
+      console.log('data tidak bisa di update');
+    }
+  }
+
   deleteList(id: number): void {
     const findIndex = this.listApp.findIndex(index => index._id === id);
 
