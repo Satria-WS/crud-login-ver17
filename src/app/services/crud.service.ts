@@ -18,13 +18,15 @@ export class CrudService {
   ];
 
   addList(formData: { title: string; detail: string }): void {
+    // const maxId = this.listApp.reduce((max, item) => (item._id > max ? item._id : max), 0);
+    const maxId = this.listApp.reduce((_, item) => item._id, 0);
     const newItem: List = {
-      _id: this.listApp.length + 1,
+      _id: maxId + 1, // Increment the maximum _id found
       title: formData.title,
       text: formData.detail,
     };
     this.listApp.push(newItem);
-    console.log('Updated showList:', this.listApp);
+    console.log('Add showList:', this.listApp);
   }
 
   updateList(id: number, formData: { title: string; detail: string }): void {
@@ -32,6 +34,7 @@ export class CrudService {
     if (findIndex !== -1) {
       this.listApp[findIndex].title = formData.title;
       this.listApp[findIndex].text = formData.detail;
+      console.log(' Updated showList:', this.listApp);
     } else {
       console.log('data tidak bisa di update');
     }
@@ -42,6 +45,7 @@ export class CrudService {
 
     if (findIndex !== -1) {
       this.listApp.splice(findIndex, 1);
+      console.log(' delete showList:', this.listApp);
     } else {
       console.warn('id tidak di temukan');
     }
